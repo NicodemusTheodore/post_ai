@@ -1,19 +1,19 @@
 const nodemailer = require("nodemailer");
-const USER = process.env.USER;
-const PASS = process.env.PASS;
+const EMAIL_USER = process.env.EMAIL_USER;
+const EMAIL_PASS = process.env.EMAIL_PASS;
 
 const transport = nodemailer.createTransport({
   service: "Gmail",
   auth: {
-    user: USER,
-    pass: PASS,
+    user: EMAIL_USER,
+    pass: EMAIL_PASS,
   },
 });
 
 const sendConfirmationEmail = (name, email, verificationCode) => {
   transport
     .sendMail({
-      from: USER,
+      from: EMAIL_USER,
       to: email,
       subject: "Please verify your account",
       html: `
